@@ -6,10 +6,6 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Hackathon Winner](https://img.shields.io/badge/🏆%202nd%20Rank-INDORE%20TECH%20HACKATHON%202025-blue)](.)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)](.)
-[![React](https://img.shields.io/badge/React-18+-61dafb?logo=react)](.)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?logo=fastapi)](.)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](.)
 
 > ### 🚀 **"Empowering Citizens. Protecting Communities. Detecting Threats."**
 >
