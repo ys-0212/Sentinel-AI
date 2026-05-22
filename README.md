@@ -221,7 +221,6 @@ npm run dev
 - Audio processing: Vosk (English & Hindi)
 - Classification: Safe → Scam
 - Processing time: < 5 seconds
-- **Accuracy: 89%**
 
 ### Duplicate Detection
 
@@ -269,12 +268,12 @@ Access: http://YOUR_EC2_IP
 **Team Name:** EENA MEENA DEEKA  
 **Organization:** Government of Indore, Madhya Pradesh (MP)
 
-**Sentinel AI Development Team**
-
-- Yogendra Singh
-- Sanskriti Jain
-- Rishabh Mahesh Khadse
-- Paawni Gulati
+| Name                  | Role      |
+| --------------------- | --------- |
+| Yogendra Singh        | Developer |
+| Sanskriti Jain        | Developer |
+| Rishabh Mahesh Khadse | Developer |
+| Paawni Gulati         | Developer |
 
 ---
 
