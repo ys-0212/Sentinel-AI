@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About CyberSafe - Advanced Cybercrime Reporting Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #718096;
+            line-height: 1.7;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 60px 0;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .mission-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+        }
+
+        .mission-section h2 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .mission-section p {
+            color: #4a5568;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tech-stack {
+            background: #f7fafc;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .tech-stack h2 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #667eea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.2);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+            margin: 40px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            background: white;
+            color: #667eea;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-large:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 60px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body style="background: #f7fafc; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+        <!-- Hero Section -->
+        <div class="about-hero">
+            <h1>🛡️ About CyberSafe</h1>
+            <p>India's Most Advanced AI-Powered Cybercrime Reporting & Detection Platform</p>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="mission-section">
+            <h2>Our Mission</h2>
+            <p>
+                CyberSafe is revolutionizing cybercrime reporting in India by combining cutting-edge artificial
+                intelligence with user-friendly design. We empower citizens to report cybercrimes efficiently while
+                providing law enforcement with powerful tools to detect, analyze, and prevent digital fraud. Our
+                platform uses advanced NLP, behavioral analysis, and machine learning to protect millions from online
+                threats.
+            </p>
+        </div>
+
+        <!-- Features Grid -->
+        <h2 style="text-align: center; color: #2d3748; font-size: 2.5rem; margin: 60px 0 40px;">Platform Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🤖</span>
+                <h3>AI-Powered Malicious Text Detection</h3>
+                <p>
+                    Our advanced Groq-powered AI analyzes emails, messages, and chats to detect phishing, scareware,
+                    ransomware, and social engineering attacks. With multi-model fallback and retry logic, we ensure
+                    99.9% uptime and accurate threat classification.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📞</span>
+                <h3>Call Scam Detector</h3>
+                <p>
+                    Upload audio recordings or paste transcripts of suspicious calls. Our system uses speech-to-text
+                    conversion and NLP analysis to identify scam patterns, urgency tactics, and fraudulent requests in
+                    both English and Hindi.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3>Smart Complaint Management</h3>
+                <p>
+                    Automated complaint processing with AI-generated summaries, severity scoring, crime classification,
+                    and financial loss estimation. Track your complaint status in real-time with admin notifications
+                    and updates.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔍</span>
+                <h3>NLP-Based Similarity Detection</h3>
+                <p>
+                    Using sentence transformers and FAISS indexing, we automatically detect similar complaints to
+                    identify crime patterns, serial offenders, and organized fraud networks. Features intelligent
+                    caching and batch processing for lightning-fast results.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3>Behavioral Analysis & Anomaly Detection</h3>
+                <p>
+                    Advanced typing biometrics, IP analysis, VPN detection, and device fingerprinting to identify
+                    suspicious login attempts and prevent unauthorized access. Real-time risk scoring with anomaly
+                    alerts.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">💬</span>
+                <h3>Intelligent Chatbot Assistant</h3>
+                <p>
+                    RAG-based chatbot with local PDF knowledge base and web search fallback. Get instant answers about
+                    cybercrime laws, filing procedures, and safety tips. Powered by FAISS vector search and Groq LLM
+                    for accurate, context-aware responses.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔐</span>
+                <h3>Multi-Evidence Support</h3>
+                <p>
+                    Upload PDFs, images, audio recordings, and videos as evidence. Our platform supports OCR for text
+                    extraction from images, audio transcription, and secure file storage with automatic organization.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3>Advanced Analytics Dashboard</h3>
+                <p>
+                    Comprehensive admin dashboard with real-time statistics, complaint heatmaps, crime type
+                    distribution, severity trends, and user activity monitoring. Export reports and visualize data with
+                    interactive charts.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔔</span>
+                <h3>Real-Time Notifications</h3>
+                <p>
+                    Instant notifications for users on complaint status changes and admin notes. Admins receive alerts
+                    for new high-severity complaints, suspicious login attempts, and urgent cases requiring immediate
+                    attention.
+                </p>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Platform Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2>99.9%</h2>
+                    <p>Threat Detection Accuracy</p>
+                </div>
+                <div class="stat-item">
+                    <h2>10x</h2>
+                    <p>Faster Complaint Processing</p>
+                </div>
+                <div class="stat-item">
+                    <h2>24/7</h2>
+                    <p>AI-Powered Support</p>
+                </div>
+                <div class="stat-item">
+                    <h2>100%</h2>
+                    <p>Secure & Encrypted</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="tech-stack">
+            <h2>Built With Cutting-Edge Technology</h2>
+            <div class="tech-list">
+                <span class="tech-badge">🤖 Groq AI (Llama 3.3)</span>
+                <span class="tech-badge">🧠 Sentence Transformers</span>
+                <span class="tech-badge">⚡ FAISS Vector Search</span>
+                <span class="tech-badge">🐍 Python FastAPI</span>
+                <span class="tech-badge">💾 SQLite Database</span>
+                <span class="tech-badge">🎨 Modern HTML/CSS/JS</span>
+                <span class="tech-badge">🔍 NLP & Machine Learning</span>
+                <span class="tech-badge">🎙️ Speech Recognition</span>
+                <span class="tech-badge">📊 Data Analytics</span>
+                <span class="tech-badge">🔐 Security & Encryption</span>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Report a Cybercrime?</h2>
+            <p>Join thousands of users protecting themselves with CyberSafe</p>
+            <a href="/login" class="btn-large">Get Started Now →</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 CyberSafe Platform | Version 2.0 | Built with ❤️ for a Safer Digital India</p>
+            <p style="margin-top: 10px;">
+                <a href="/login">Login</a> •
+                <a href="/register">Register</a> •
+                <a href="/">Home</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+# =============================================================================
+# CyberSafe Docker Compose Configuration
+# =============================================================================
+# Usage:
+#   Development:  docker-compose up -d
+#   Production:   docker-compose -f docker-compose.yml up -d
+#   Stop:         docker-compose down
+#   Logs:         docker-compose logs -f
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # Backend - FastAPI Application
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cybersafe-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # Database persistence - keeps data across container restarts
+      - ./api/cybersafe.db:/app/api/cybersafe.db
+      
+      # Uploads directory - user uploaded files persist here
+      - ./api/uploads:/app/api/uploads
+      
+      # Chatbot PDF files (read-only) - required for RAG chatbot
+      - ./chatbot/CyberCrime Manual.pdf:/app/chatbot/CyberCrime Manual.pdf:ro
+      - ./chatbot/Indore Cybercrime Details and Actions_.pdf:/app/chatbot/Indore Cybercrime Details and Actions_.pdf:ro
+      - ./chatbot/it_act_2000_updated.pdf:/app/chatbot/it_act_2000_updated.pdf:ro
+      
+      # Vosk ML models (read-only) - required for audio transcription
+      # These are large (~1GB each) and should NOT be in Docker image
+      - ./call_scam_detector/model-en:/app/call_scam_detector/model-en:ro
+      - ./call_scam_detector/model-hi:/app/call_scam_detector/model-hi:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # ---------------------------------------------------------------------------
+  # Frontend - React Application (Nginx)
+  # ---------------------------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile
+      args:
+        # IMPORTANT: Change this to your EC2 public IP or domain for production
+        VITE_API_BASE_URL: http://localhost:8000
+    container_name: cybersafe-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+# =============================================================================
+# NOTES FOR AWS EC2 DEPLOYMENT:
+# =============================================================================
+# 1. Update VITE_API_BASE_URL to your EC2 public IP:
+#    VITE_API_BASE_URL: http://YOUR_EC2_PUBLIC_IP:8000
+#
+# 2. Make sure .env file exists with required API keys
+#
+# 3. Ensure security groups allow ports 80 and 8000
+#
+# 4. Run: docker-compose up -d --build
+# =============================================================================

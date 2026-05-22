@@ -1,0 +1,88 @@
+# =============================================================================
+# CyberSafe Docker Ignore File
+# Files and directories excluded from Docker build context
+# =============================================================================
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Node.js (frontend-react has its own Dockerfile)
+node_modules/
+npm-debug.log
+
+# Frontend source (only dist is needed in production)
+frontend-react/node_modules/
+frontend-react/.env
+frontend-react/src/
+frontend-react/public/
+frontend-react/*.json
+frontend-react/*.ts
+frontend-react/*.js
+frontend-react/*.html
+
+# Legacy frontend (not used in Docker)
+frontend/
+
+# Large ML model files - these are volume mounted, NOT copied
+call_scam_detector/model-en/
+call_scam_detector/model-hi/
+
+# Chatbot PDFs - these are volume mounted
+chatbot/*.pdf
+
+# SQLite database - volume mounted for persistence
+api/cybersafe.db
+*.db
+
+# User uploads - volume mounted for persistence  
+api/uploads/
+uploads/
+
+# Environment files (use --env-file at runtime)
+.env
+.env.*
+!.env.example
+
+# Documentation and markdown
+*.md
+!README.md
+
+# Logs
+*.log
+
+# Test files
+tests/
+test/
+*_test.py
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Misc
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp

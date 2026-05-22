@@ -1,0 +1,147 @@
+# ==================== PYTHON ====================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==================== VIRTUAL ENVIRONMENTS ====================
+.venv/
+venv/
+ENV/
+env/
+.venv*
+env.bak/
+venv.bak/
+
+# ==================== ENVIRONMENT & SECRETS ====================
+.env
+.env.local
+.env.*.local
+.env.docker.example  # Template only, keep in repo if needed
+*.pem
+*.key
+*.crt
+credentials.json
+secrets.json
+
+# ==================== DATABASES ====================
+*.sqlite3
+*.sqlite
+*.db
+*.sqlite-wal
+*.sqlite-shm
+cybersafe.db
+
+# ==================== NODE.JS ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+.npm/
+.eslintcache
+.node_repl_history
+
+# ==================== BUILD OUTPUTS ====================
+dist/
+dist-ssr/
+*.local
+.cache/
+.parcel-cache
+.next
+out
+
+# ==================== IDE & EDITOR ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+*.code-workspace
+
+# ==================== TESTING ====================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+*.cover
+
+# ==================== ML MODELS (Large Files) ====================
+call_scam_detector/model-en/
+call_scam_detector/model-hi/
+*.pth
+*.pt
+*.pb
+*.onnx
+*.h5
+*.keras
+
+# ==================== LOGS ====================
+*.log
+logs/
+
+# ==================== UPLOADS & TEMP FILES ====================
+api/uploads/
+api/uploads/admin_ids/
+api/uploads/gov_ids/
+*.tmp
+tmp/
+temp/
+
+# ==================== OS & SYSTEM ====================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# ==================== IDE SPECIFIC ====================
+.vscode/
+.vscode-server/
+.pylintrc
+.flake8
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ==================== MAC ====================
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ==================== WINDOWS ====================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

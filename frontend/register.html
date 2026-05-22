@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe - Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 480px;
+            padding: var(--spacing-xl);
+        }
+
+        .register-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .register-logo {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .register-logo svg {
+            width: 48px;
+            height: 48px;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .register-logo h1 {
+            font-size: 1.5rem;
+            color: var(--gray-800);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            font-size: 0.875rem;
+        }
+
+        .register-tabs {
+            display: flex;
+            margin-bottom: var(--spacing-xl);
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+            padding: 4px;
+        }
+
+        .register-tab {
+            flex: 1;
+            padding: var(--spacing-sm);
+            text-align: center;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: all var(--transition-fast);
+        }
+
+        .register-tab.active {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .register-form {
+            display: none;
+        }
+
+        .register-form.active {
+            display: block;
+        }
+
+        .error-msg {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .success-msg {
+            color: #198754;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <h1>CyberSafe</h1>
+                <p class="text-muted">Create Your Account</p>
+            </div>
+
+            <div class="register-tabs">
+                <button class="register-tab active" onclick="switchTab('user')">User</button>
+                <button class="register-tab" onclick="switchTab('admin')">Admin</button>
+            </div>
+
+            <!-- User Registration Form -->
+            <form id="user-form" class="register-form active" onsubmit="handleRegister(event, 'user')">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="user-username" class="form-input" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="user-email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" id="user-phone" class="form-input" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="user-password" class="form-input" placeholder="Create a password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="user-confirm" class="form-input" placeholder="Confirm your password"
+                        required>
+                </div>
+                <div id="user-message"></div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Create User Account
+                </button>
+                <p class="login-link">
+                    Already have an account? <a href="/login">Login here</a>
+                </p>
+            </form>
+
+            <!-- Admin Registration Form -->
+            <form id="admin-form" class="register-form" onsubmit="handleRegister(event, 'admin')">
+                <div class="form-group">
+                    <label class="form-label">Admin Username</label>
+                    <input type="text" id="admin-username" class="form-input" placeholder="Choose admin username"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="admin-password" class="form-input" placeholder="Create a password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="admin-confirm" class="form-input" placeholder="Confirm your password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Security Code</label>
+                    <input type="text" id="admin-security" class="form-input" placeholder="Create 6-digit security code"
+                        maxlength="6" required>
+                    <p class="form-hint">This code will be required for admin login.</p>
+                </div>
+                <div id="admin-message"></div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Create Admin Account
+                </button>
+                <p class="login-link">
+                    Already have an account? <a href="/login">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        function switchTab(type) {
+            // Update tabs
+            document.querySelectorAll('.register-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update forms
+            document.querySelectorAll('.register-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.getElementById(`${type}-form`).classList.add('active');
+        }
+
+        async function handleRegister(event, type) {
+            event.preventDefault();
+
+            const msgEl = document.getElementById(`${type}-message`);
+            msgEl.innerHTML = '<p class="text-muted">Creating account...</p>';
+
+            if (type === 'user') {
+                const username = document.getElementById('user-username').value;
+                const email = document.getElementById('user-email').value;
+                const phone = document.getElementById('user-phone').value;
+                const password = document.getElementById('user-password').value;
+                const confirm = document.getElementById('user-confirm').value;
+
+                if (password !== confirm) {
+                    msgEl.innerHTML = '<p class="error-msg">Passwords do not match!</p>';
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE}/auth/register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, email, phone, password })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        msgEl.innerHTML = '<p class="success-msg">✅ Account created successfully! Redirecting to login...</p>';
+                        setTimeout(() => window.location.href = '/login', 1500);
+                    } else {
+                        msgEl.innerHTML = `<p class="error-msg">❌ ${result.detail || result.message || 'Registration failed'}</p>`;
+                    }
+                } catch (error) {
+                    msgEl.innerHTML = `<p class="error-msg">❌ Connection error: ${error.message}</p>`;
+                }
+            } else {
+                // Admin registration
+                const username = document.getElementById('admin-username').value;
+                const password = document.getElementById('admin-password').value;
+                const confirm = document.getElementById('admin-confirm').value;
+                const security_code = document.getElementById('admin-security').value;
+
+                if (password !== confirm) {
+                    msgEl.innerHTML = '<p class="error-msg">Passwords do not match!</p>';
+                    return;
+                }
+
+                if (security_code.length !== 6) {
+                    msgEl.innerHTML = '<p class="error-msg">Security code must be 6 digits!</p>';
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE}/auth/register/admin`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password, security_code })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        msgEl.innerHTML = '<p class="success-msg">✅ Admin account created! Redirecting to login...</p>';
+                        setTimeout(() => window.location.href = '/login', 1500);
+                    } else {
+                        msgEl.innerHTML = `<p class="error-msg">❌ ${result.detail || result.message || 'Registration failed'}</p>`;
+                    }
+                } catch (error) {
+                    msgEl.innerHTML = `<p class="error-msg">❌ Connection error: ${error.message}</p>`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

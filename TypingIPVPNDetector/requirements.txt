@@ -1,0 +1,9 @@
+streamlit
+requests
+supabase
+pandas
+numpy
+scikit-learn
+plotly
+python-dotenv
+streamlit-js-eval

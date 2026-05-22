@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 480px;
+            padding: var(--spacing-xl);
+        }
+
+        .login-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .login-logo svg {
+            width: 48px;
+            height: 48px;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .login-logo h1 {
+            font-size: 1.5rem;
+            color: var(--gray-800);
+        }
+
+        .login-tabs {
+            display: flex;
+            margin-bottom: var(--spacing-xl);
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+            padding: 4px;
+        }
+
+        .login-tab {
+            flex: 1;
+            padding: var(--spacing-sm);
+            text-align: center;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: all var(--transition-fast);
+        }
+
+        .login-tab.active {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            font-size: 0.875rem;
+        }
+
+        .typing-box {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .typing-sentence {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            font-style: italic;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .typing-metrics {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .biometric-section {
+            background: #e8f4fd;
+            border: 1px solid #b6d4fe;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .biometric-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <h1>CyberSafe</h1>
+                <p class="text-muted">Secure Login Portal</p>
+            </div>
+
+            <div class="login-tabs">
+                <button class="login-tab active" onclick="switchTab('user')">User</button>
+                <button class="login-tab" onclick="switchTab('admin')">Admin</button>
+            </div>
+
+            <!-- User Login Form -->
+            <form id="user-form" class="login-form active" onsubmit="handleLogin(event, 'user')">
+                <div class="form-group">
+                    <label class="form-label">Email or Username</label>
+                    <input type="text" id="user-username" class="form-input" placeholder="Enter your email or username"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="user-password" class="form-input" placeholder="Enter your password"
+                        required>
+                </div>
+
+                <!-- Typing Biometrics Section -->
+                <div class="biometric-section">
+                    <div class="biometric-title">
+                        🔐 Typing Verification
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: var(--spacing-sm);">
+                        For security, please type the following sentence exactly as shown:
+                    </p>
+                    <div class="typing-box">
+                        <div class="typing-sentence" id="user-sentence">
+                            The quick brown fox jumps over the lazy dog.
+                        </div>
+                    </div>
+                    <input type="text" id="user-typing-input" class="form-input"
+                        placeholder="Type the sentence above..." autocomplete="off" required>
+                    <div class="typing-metrics">
+                        <span>Speed: <strong id="user-wpm">0</strong> WPM</span>
+                        <span>Time: <strong id="user-time">0</strong>s</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Login & Verify
+                </button>
+                <p class="register-link">
+                    Don't have an account? <a href="register.html">Register here</a>
+                </p>
+            </form>
+
+            <!-- Admin Login Form -->
+            <form id="admin-form" class="login-form" onsubmit="handleLogin(event, 'admin')">
+                <div class="form-group">
+                    <label class="form-label">Admin ID</label>
+                    <input type="text" id="admin-username" class="form-input" placeholder="Enter admin ID" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="admin-password" class="form-input" placeholder="Enter your password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Security Code</label>
+                    <input type="text" id="admin-security" class="form-input" placeholder="Enter 6-digit code"
+                        maxlength="6" required>
+                </div>
+
+                <!-- Typing Biometrics Section for Admin -->
+                <div class="biometric-section">
+                    <div class="biometric-title">
+                        🔐 Typing Verification
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: var(--spacing-sm);">
+                        Type the verification sentence:
+                    </p>
+                    <div class="typing-box">
+                        <div class="typing-sentence" id="admin-sentence">
+                            Pack my box with five dozen liquor jugs.
+                        </div>
+                    </div>
+                    <input type="text" id="admin-typing-input" class="form-input"
+                        placeholder="Type the sentence above..." autocomplete="off" required>
+                    <div class="typing-metrics">
+                        <span>Speed: <strong id="admin-wpm">0</strong> WPM</span>
+                        <span>Time: <strong id="admin-time">0</strong>s</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Login as Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        // Typing sentences
+        const sentences = [
+            "The quick brown fox jumps over the lazy dog.",
+            "Pack my box with five dozen liquor jugs.",
+            "How vexingly quick daft zebras jump.",
+            "Sphinx of black quartz judge my vow."
+        ];
+
+        // Timing state
+        let userStartTime = null;
+        let adminStartTime = null;
+        let userTypingData = [];
+        let adminTypingData = [];
+
+        // Initialize with random sentences
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('user-sentence').textContent = sentences[Math.floor(Math.random() * sentences.length)];
+            document.getElementById('admin-sentence').textContent = sentences[Math.floor(Math.random() * sentences.length)];
+
+            // Setup typing listeners
+            setupTypingListener('user');
+            setupTypingListener('admin');
+        });
+
+        function setupTypingListener(type) {
+            const input = document.getElementById(`${type}-typing-input`);
+            const sentence = document.getElementById(`${type}-sentence`);
+
+            input.addEventListener('focus', () => {
+                if (type === 'user' && !userStartTime) {
+                    userStartTime = Date.now();
+                } else if (type === 'admin' && !adminStartTime) {
+                    adminStartTime = Date.now();
+                }
+            });
+
+            input.addEventListener('input', () => {
+                const startTime = type === 'user' ? userStartTime : adminStartTime;
+                if (!startTime) return;
+
+                const elapsed = (Date.now() - startTime) / 1000;
+                const words = input.value.trim().split(/\s+/).filter(w => w).length;
+                const wpm = elapsed > 0 ? Math.round((words / elapsed) * 60) : 0;
+
+                document.getElementById(`${type}-wpm`).textContent = wpm;
+                document.getElementById(`${type}-time`).textContent = elapsed.toFixed(1);
+
+                // Store keystroke timing (for biometrics)
+                if (type === 'user') {
+                    userTypingData.push({ time: Date.now(), char: input.value.slice(-1) });
+                } else {
+                    adminTypingData.push({ time: Date.now(), char: input.value.slice(-1) });
+                }
+            });
+        }
+
+        function switchTab(type) {
+            // Update tabs
+            document.querySelectorAll('.login-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update forms
+            document.querySelectorAll('.login-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.getElementById(`${type}-form`).classList.add('active');
+
+            // Reset timing
+            if (type === 'user') {
+                userStartTime = null;
+                userTypingData = [];
+            } else {
+                adminStartTime = null;
+                adminTypingData = [];
+            }
+        }
+
+        async function handleLogin(event, type) {
+            event.preventDefault();
+
+            const startTime = type === 'user' ? userStartTime : adminStartTime;
+            const typingInput = document.getElementById(`${type}-typing-input`).value;
+            const expectedSentence = document.getElementById(`${type}-sentence`).textContent;
+
+            // Check if sentence was typed
+            if (!typingInput.trim()) {
+                alert('Please type the verification sentence.');
+                return;
+            }
+
+            // Calculate metrics
+            const elapsed = startTime ? (Date.now() - startTime) / 1000 : 0;
+            const words = expectedSentence.split(/\s+/).length;
+            const typingSpeed = elapsed > 0 ? Math.round((words / elapsed) * 60) : 0;
+
+            // Get form data
+            const username = document.getElementById(`${type}-username`).value;
+            const password = document.getElementById(`${type}-password`).value;
+
+            // Build request body
+            const body = {
+                username,
+                password,
+                typing_speed: typingSpeed,
+                form_completion_time: Math.round(elapsed),
+                typing_pattern: JSON.stringify(type === 'user' ? userTypingData : adminTypingData)
+            };
+
+            // Add security code for admin
+            if (type === 'admin') {
+                body.security_code = document.getElementById('admin-security').value;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/login/${type}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Store session
+                    sessionStorage.setItem('userSession', JSON.stringify({
+                        user_id: result.user_id,
+                        username: result.username,
+                        user_type: result.user_type,
+                        typing_speed: typingSpeed,
+                        risk_score: result.risk_score || 0
+                    }));
+
+                    // Redirect
+                    window.location.href = type === 'user' ? '/dashboard' : '/admin';
+                } else {
+                    alert(result.message || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Connection error. Please try again.');
+            }
+        }
+    </script>
+</body>
+
+</html>
