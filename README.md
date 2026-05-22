@@ -264,12 +264,12 @@ Access: http://YOUR_EC2_IP
 **Team Name:** EENA MEENA DEEKA  
 **Organization:** Government of Indore, Madhya Pradesh (MP)
 
-| Name                  | Role      |
-| --------------------- | --------- |
-| Yogendra Singh        | Developer |
-| Sanskriti Jain        | Developer |
-| Rishabh Mahesh Khadse | Developer |
-| Paawni Gulati         | Developer |
+| Name          
+| --------------------- 
+| Yogendra Singh 
+| Sanskriti Jain  
+| Rishabh Mahesh Khadse
+| Paawni Gulati        
 
 ---
 
