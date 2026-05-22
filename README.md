@@ -266,6 +266,9 @@ Access: http://YOUR_EC2_IP
 
 ## 👥 Team
 
+**Team Name:** EENA MEENA DEEKA  
+**Organization:** Government of Indore, Madhya Pradesh (MP)
+
 **Sentinel AI Development Team**
 
 - Yogendra Singh
