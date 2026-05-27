@@ -251,7 +251,7 @@ Access: http://YOUR_EC2_IP
 
 ## 🏆 Awards & Recognition
 
-🥈 **2nd Rank Winner** - INDORE TECH HACKATHON 2025
+🥈 **2nd Rank Winner** - INDORE TECH HACKATHON 2025 https://indoretechhackathon.com/winners
 
 **Organized by:** INDORE SMART CITY LTD (Government of India)
 
